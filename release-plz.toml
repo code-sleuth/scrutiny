@@ -15,4 +15,4 @@ git_release_body = """
 [[package]]
 name = "scruitny"
 changelog_update = true
-changelog_path = "./CHANGELOG.md"
+changelog_path = "CHANGELOG.md"
