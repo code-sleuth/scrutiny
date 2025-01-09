@@ -4,5 +4,12 @@
 name = "scruitny"
 version = "0.1.0"
 edition = "2021"
+homepage = "https://github.com/code-sleuth/scrutiny"
+repository = "https://github.com/code-sleuth/scrutiny"
+license = "Unlicense"
+authors = ["Ibrahim Mbaziira <code.ibra@gmail.com>"]
+description = "my crate"
+readme = "README.md"
+categories = ["development-tools::testing"]
 
 [dependencies]
