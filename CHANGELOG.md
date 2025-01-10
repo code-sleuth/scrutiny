@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.7](https://github.com/code-sleuth/scrutiny/compare/v0.1.6...v0.1.7) - 2025-01-10
+
+### Other
+
+- debug
+- debug
+
 ## [0.1.6](https://github.com/code-sleuth/scrutiny/compare/v0.1.5...v0.1.6) - 2025-01-10
 
 ### Other
