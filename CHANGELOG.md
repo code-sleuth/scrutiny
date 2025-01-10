@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.8](https://github.com/code-sleuth/scrutiny/compare/v0.1.7...v0.1.8) - 2025-01-10
+
+### Other
+
+- debug
+- Merge pull request [#13](https://github.com/code-sleuth/scrutiny/pull/13) from code-sleuth/release-plz-2025-01-10T02-04-35Z
+
 ## [0.1.7](https://github.com/code-sleuth/scrutiny/compare/v0.1.6...v0.1.7) - 2025-01-10
 
 ### Other
