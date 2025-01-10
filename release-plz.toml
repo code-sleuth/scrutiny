@@ -2,7 +2,8 @@
 
 [workspace]
 git_release_enable = false
-dependencies_update = true
+dependencies_update = false
+git-tag = true
 
 git_release_body = """
 {{ changelog }}
@@ -16,5 +17,7 @@ git_release_body = """
 
 [[package]]
 name = "scruitny"
-changelog_update = true
+git_tag_enable = true
+git_release_enable = true
+release = true
 changelog_path = "CHANGELOG.md"
