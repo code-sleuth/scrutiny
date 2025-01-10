@@ -104,8 +104,8 @@ jobs:
           echo "pr_base_branch: ${{ fromJSON(steps.release-plz.outputs.pr).base_branch }}"
 
   upload-assets:
-    needs: release-plz
-    if: needs.release-plz.outputs.releases_created == 'true' && github.repository_owner == 'code-sleuth'
+    needs: release-plz-release
+    if: needs.release-plz-release.outputs.releases_created == 'true' && github.repository_owner == 'code-sleuth'
     permissions:
       contents: write
     name: ${{ matrix.target }}
