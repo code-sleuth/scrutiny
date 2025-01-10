@@ -80,7 +80,7 @@ jobs:
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
       - name: Run release-plz
-        id: release-plz-pr
+        id: release-plz-prr
         uses: release-plz/action@v0.5
         with:
           command: release-pr
@@ -89,9 +89,9 @@ jobs:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
       - name: Read release-pr output
         env:
-          PRS: ${{ steps.release-plz-pr.outputs.prs }}
-          PR: ${{ steps.release-plz-pr.outputs.pr }}
-          PRS_CREATED: ${{ steps.release-plz-pr.outputs.prs_created }}
+          PRS: ${{ steps.release-plz-prr.outputs.prs }}
+          PR: ${{ steps.release-plz-prr.outputs.pr }}
+          PRS_CREATED: ${{ steps.release-plz-prr.outputs.prs_created }}
         run: |
           set -e
           echo "prs: $PRS" # example: [{"base_branch":"main","head_branch":"release-plz-2024-05-01T20-38-05Z","html_url":"https://github.com/MarcoIeni/rust-workspace-example/pull/198","number":198}]
