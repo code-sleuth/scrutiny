@@ -11,35 +11,35 @@ on:
 
 jobs:
 
-  release-plz:
-    name: Release-plz
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-      contents: write
-    outputs:
-      releases_created: ${{ steps.release-plz.outputs.releases_created }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@stable
-      - name: Run release-plz
-        id: release-plz
-        uses: release-plz/action@v0.5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
-      - name: Debug Output
-        run: |
-          echo "releases_created: ${{ steps.release-plz.outputs.releases_created }}"
-          echo "All outputs: ${{ toJSON(steps.release-plz.outputs) }}"
+  # release-plz:
+  #   name: Release-plz
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     pull-requests: write
+  #     contents: write
+  #   outputs:
+  #     releases_created: ${{ steps.release-plz.outputs.releases_created }}
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - name: Install Rust toolchain
+  #       uses: dtolnay/rust-toolchain@stable
+  #     - name: Run release-plz
+  #       id: release-plz
+  #       uses: release-plz/action@v0.5
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+  #         CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+  #     - name: Debug Output
+  #       run: |
+  #         echo "releases_created: ${{ steps.release-plz.outputs.releases_created }}"
+  #         echo "All outputs: ${{ toJSON(steps.release-plz.outputs) }}"
 
   upload-assets:
-    needs: release-plz
-    if: ${{ needs.release-plz.outputs.releases_created == 'true' && startsWith(github.ref, 'refs/tags/v') }}  # Removed other conditions for testing
+    # needs: release-plz
+    # if: ${{ needs.release-plz.outputs.releases_created == 'true' && startsWith(github.ref, 'refs/tags/v') }}  # Removed other conditions for testing
     permissions:
       contents: write
     name: ${{ matrix.target }}
@@ -87,7 +87,7 @@ jobs:
         if: endsWith(matrix.target, 'windows-msvc')
       - uses: taiki-e/upload-rust-binary-action@e7953b6078194a4ae5f5619632e3715db6275561 # v1.24.0
         with:
-          bin: release-plz
+          bin: scruitny
           target: ${{ matrix.target }}
           tar: all
           zip: windows
