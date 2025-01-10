@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.3](https://github.com/code-sleuth/scrutiny/compare/v0.1.2...v0.1.3) - 2025-01-10
+
+### Other
+
+- fix condition
+- fix condition
+- fix condition
+- fix condition
+
 ## [0.1.2](https://github.com/code-sleuth/scrutiny/compare/v0.1.1...v0.1.2) - 2025-01-10
 
 ### Other
