@@ -80,7 +80,7 @@ jobs:
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
       - name: Run release-plz
-        id: release-plz
+        id: release-plz-pr
         uses: release-plz/action@v0.5
         with:
           command: release-pr
@@ -89,9 +89,9 @@ jobs:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
       - name: Read release-pr output
         env:
-          PRS: ${{ steps.release-plz.outputs.prs }}
-          PR: ${{ steps.release-plz.outputs.pr }}
-          PRS_CREATED: ${{ steps.release-plz.outputs.prs_created }}
+          PRS: ${{ steps.release-plz-pr.outputs.prs }}
+          PR: ${{ steps.release-plz-pr.outputs.pr }}
+          PRS_CREATED: ${{ steps.release-plz-pr.outputs.prs_created }}
         run: |
           set -e
           echo "prs: $PRS" # example: [{"base_branch":"main","head_branch":"release-plz-2024-05-01T20-38-05Z","html_url":"https://github.com/MarcoIeni/rust-workspace-example/pull/198","number":198}]
@@ -102,28 +102,6 @@ jobs:
           echo "pr_html_url: ${{ fromJSON(steps.release-plz.outputs.pr).html_url }}"
           echo "pr_head_branch: ${{ fromJSON(steps.release-plz.outputs.pr).head_branch }}"
           echo "pr_base_branch: ${{ fromJSON(steps.release-plz.outputs.pr).base_branch }}"
-
-  release-plz:
-    name: Release-plz
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-      contents: write
-    outputs:
-      releases_created: ${{ steps.release-plz.outputs.releases_created }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Install Rust Toolchain
-        uses: actions-rust-lang/setup-rust-toolchain@97db979bf844c838b06022f305ca480d01b4d5fe
-      - name: Run release-plz
-        id: release-plz
-        uses: release-plz/action@v0.5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
   upload-assets:
     needs: release-plz
