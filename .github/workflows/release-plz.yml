@@ -107,10 +107,10 @@ jobs:
     name: Release-plz
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-          persist-credentials: false
+          fetch-depth: 0
       # - name: Generate GitHub token
       #   uses: actions/create-github-app-token@5d869da34e18e7287c1daad50e0b8ea0f506ce69 # v1.11.0
       #   id: generate-token
@@ -121,7 +121,7 @@ jobs:
         uses: actions-rust-lang/setup-rust-toolchain@97db979bf844c838b06022f305ca480d01b4d5fe
       - name: Run release-plz
         id: release-plz
-        uses: release-plz/action@main
+        uses: release-plz/action@v0.5
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
