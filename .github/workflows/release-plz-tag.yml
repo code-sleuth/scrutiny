@@ -71,7 +71,7 @@ jobs:
             os: ubuntu-22.04
           # Windows targets
           - target: aarch64-pc-windows-msvc
-            os: windows-2022  # Updated to newer Windows
+            os: windows-2022
           - target: x86_64-pc-windows-msvc
             os: windows-2022
           # macOS targets
