@@ -3,7 +3,6 @@
 [workspace]
 git_release_enable = false
 dependencies_update = false
-git-tag = true
 
 git_release_body = """
 {{ changelog }}
